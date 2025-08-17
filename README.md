@@ -1,4 +1,4 @@
-**Newest is AntiAttack-PP.py** 
+**Newest is AntiAttacks-PP.py** 
 
 ![Screenshot of AntiAttck-PP running!](https://github.com/BadNintendo/AntiAttacker/blob/f79cf14afb4d18a054606f9526349e234d619704/Anti-PP.png)
 

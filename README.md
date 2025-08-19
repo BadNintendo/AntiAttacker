@@ -4,6 +4,33 @@
 
 ---
 
+### ✅ Built-in Modules (No Installation Needed)
+These come with Python by default:
+- `socket`
+- `select`
+- `json`
+- `logging`
+- `threading`
+- `datetime`
+- `re`
+
+---
+
+### 📦 External Module (Requires Installation)
+Only **Scapy** needs to be installed:
+
+```bash
+pip install scapy
+```
+
+If you're using Python 3 and want to be explicit:
+
+```bash
+python3 -m pip install scapy
+```
+
+---
+
 # How This Approach Helps Prevent Attacks
 
 The enhanced server code integrates TCP and UDP traffic handling with multi-layered attack detection, styled console alerts, and semantic logging. This approach offers a robust and extensible framework for monitoring and securing your network against evolving threats.

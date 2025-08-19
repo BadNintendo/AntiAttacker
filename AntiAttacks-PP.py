@@ -1,10 +1,16 @@
+#C:/Users/elite/AppData/Local/Programs/Python/Python313/python.exe "c:/Users/elite/OneDrive/Desktop/Work Space/AntiAttacks-PP.py"
 import socket
 import select
 import json
 import logging
 import threading
 from datetime import datetime
+from scapy.all import sniff
 import re
+
+def packet_callback(packet):
+    if packet.haslayer(IP):
+        print(f"IP Packet: {packet[IP].src} -> {packet[IP].dst}")
 
 # 🖍️ Styled console output: green background, black text, white for digits/symbols
 def styled_print(message):
@@ -167,8 +173,21 @@ def handle_data(tcp_socket, udp_socket):
             elif notified_socket == udp_socket:
                 handle_udp_connection(udp_socket)
 
+def get_local_ip():
+    try:
+        # Connect to a public IP to force routing through active interface
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 80))  # Google's DNS
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception as e:
+        return '127.0.0.1'  # fallback
+
 # 🚀 Server bootstrap
-def combined_server(host='0.0.0.0', port=80, log_file='server_log.txt'):
+def combined_server(log_file='server_log.txt'):
+    host = get_local_ip()
+    port = 80
     setup_logging(log_file)
     logging.info("Server starting...")
 
@@ -194,6 +213,8 @@ def combined_server(host='0.0.0.0', port=80, log_file='server_log.txt'):
 
     socket_thread.join()
     data_thread.join()
+    
+    sniff(prn=packet_callback, store=0)
 
 # 🏁 Entry point
 if __name__ == "__main__":

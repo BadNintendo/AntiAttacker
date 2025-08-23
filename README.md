@@ -1,4 +1,4 @@
-**Newest is AntiAttacks-PP.py** 
+**Newest is AntiPP.py** 
 
 ![Screenshot of AntiAttck-PP running!](https://github.com/BadNintendo/AntiAttacker/blob/f79cf14afb4d18a054606f9526349e234d619704/Anti-PP.png)
 
@@ -6,6 +6,7 @@
 
 ### ✅ Built-in Modules (No Installation Needed)
 These come with Python by default:
+- `time`
 - `socket`
 - `select`
 - `json`
@@ -13,22 +14,6 @@ These come with Python by default:
 - `threading`
 - `datetime`
 - `re`
-
----
-
-### 📦 External Module (Requires Installation)
-Only **Scapy** needs to be installed:
-
-```bash
-pip install scapy
-```
-
-If you're using Python 3 and want to be explicit:
-
-```bash
-python3 -m pip install scapy
-```
-
 ---
 
 # How This Approach Helps Prevent Attacks
